@@ -2,44 +2,56 @@
 
 ## users テーブル
 
-| Column     | Type   | Options     |
-| ---------- | ------ | ----------- |
-| name       | string | null: false |
-| email      | string | null: false |
-| password   | string | null: false |
-| profile    | text   | null: false |
-| occupation | text   | null: false |
-| position   | text   | null: false |
+| Column              | Type   | Options                   |
+| ------------------- | ------ | ------------------------- |
+| nickname            | string | null: false               |
+| email               | string | null: false, unique: true |
+| encrypted_password  | string | null: false               |
+| full_name           | string | null: false               |
+| kana                | string | null: false               |
+| birthday            | string | null: false               |
 
 ### Association
 
-- has_many :comments
-- has_many :prototypes
+- has_one    :purchases
+- belongs_to :items
 
-## comments テーブル
+## items テーブル
 
-| Column    | Type       | Options     |
-| --------- | ---------- | ----------- |
-| text      | text       | null: false |
-| user      | references |             |
-| prototype | references |             |
+| Column         | Type       | Options     |
+| -------------- | ---------- | ----------- |
+| image          |            |             |
+| name           | string     | null: false |
+| text           | text       | null: false |
+| category       | string     | null: false |
+| item_condition | string     | null: false |
+| street_address | string     | null: false |
+| price          | string     | null: false |
+| purchase       | references |             |
+| prototype      | references |             |
+
+### Association
+
+- has_many :users
+- has_many :purchases
+
+## purchases テーブル
+
+| Column                 | Type       | Options     |
+| ---------------------- | ---------- | ----------- |
+| card_number            | string     | null: false |
+| expiration_date        | string     | null: false |
+| security_code          | string     | null: false |
+| postal_code            | string     | null: false |
+| prefectures            | string     | null: false |
+| municipality           | string     | null: false |
+| building_name          | string     |             |
+| phone_number           | string     | null: false |
+
 
 ### Association
 
 - belongs_to :users
-- belongs_to :prototypes
+- belongs_to :items
 
-## prototypes テーブル
 
-| Column       | Type       | Options     |
-| ------------ | ---------- | ----------- |
-| title        | string     | null: false |
-| catch_copy   | text       | null: false |
-| concept      | text       | null: false |
-| image        |            |             |
-| user         | references |             |
-
-### Association
-
-- belongs_to :users
-- has_many :comments

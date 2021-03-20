@@ -7,7 +7,7 @@
                 <mxCell id="49" value="itemテーブル" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" parent="1" vertex="1">
                     <mxGeometry x="580" y="500" width="180" height="170" as="geometry"/>
                 </mxCell>
-                <mxCell id="50" value="・imag&#10;・name&#10;・text&#10;・category&#10;・user_id&#10;・purchase＿id&#10;・item_condition&#10;・street_address&#10;・price" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="49" vertex="1">
+                <mxCell id="50" value="・img&#10;・name&#10;・text&#10;・category&#10;・user_id&#10;・purchase＿id&#10;・item_condition&#10;・street_address&#10;・price" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" parent="49" vertex="1">
                     <mxGeometry y="30" width="180" height="140" as="geometry"/>
                 </mxCell>
                 <mxCell id="73" style="edgeStyle=orthogonalEdgeStyle;rounded=1;jumpSize=6;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERone;endFill=0;strokeWidth=3;startArrow=ERone;startFill=0;" parent="1" source="51" edge="1">
