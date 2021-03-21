@@ -16,49 +16,37 @@
 ### Association
 
 - has_many    :items
-- has_many    :transactions
+- has_many    :dealings
 
 ## items テーブル
 
-| Column            | Type       | Options     |
-| ----------------- | ---------- | ----------- |
-| name              | string     | null: false |
-| text              | text       | null: false |
-| category_id       | integer    | null: false |
-| item_condition_id | integer    | null: false |
-| delivery_fee_id   | integer    | null: false |
-| delivery_day_id   | integer    | null: false |
-| street_address_id | integer    | null: false |
-| price             | integer    | null: false |
-| user              | references |             |
+| Column            | Type       | Options           |
+| ----------------- | ---------- | ----------------- |
+| name              | string     | null: false       |
+| text              | text       | null: false       |
+| category_id       | integer    | null: false       |
+| item_condition_id | integer    | null: false       |
+| delivery_fee_id   | integer    | null: false       |
+| delivery_day_id   | integer    | null: false       |
+| street_address_id | integer    | null: false       |
+| price             | integer    | null: false       |
+| user              | references | foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one    :purchases
-- has_many   :transactions
-- has_many   :transactions_items
+- has_many   :dealings
 
-## transactions テーブル
+## dealings テーブル
 
-| Column            | Type       | Options     |
-| ----------------- | ---------- | ----------- |
-| user              | references |             |
-| item              | references |             |
+| Column            | Type       | Options           |
+| ----------------- | ---------- | ----------------- |
+| user              | references | foreign_key: true |
+| item              | references | foreign_key: true |
 
 - belongs_to :user
 - belongs_to :item
-- has_many   :transactions_items
-
-## transactions_items テーブル
-
-| Column            | Type       | Options     |
-| ----------------- | ---------- | ----------- |
-| transaction       | references |             |
-| item              | references |             |
-
-- belongs_to :transaction
-- belongs_to :item
+- has_one: purchase
 
 ## purchases テーブル
 
@@ -68,11 +56,11 @@
 | municipality           | string     | null: false |
 | address                | string     | null: false |
 | building_name          | string     |             |
-| postal_code            | integer    | null: false |
-| phone_number           | integer    | null: false |
+| postal_code            | string     | null: false |
+| phone_number           | string     | null: false |
 
 ### Association
 
-- belongs_to :item
+- belongs_to :dealing
 
 
