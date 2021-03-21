@@ -15,7 +15,6 @@
 
 ### Association
 
-- has_many    :purchases
 - has_many    :items
 - has_many    :transactions
 
@@ -30,13 +29,12 @@
 | delivery_fee_id   | integer    | null: false |
 | delivery_day_id   | integer    | null: false |
 | street_address_id | integer    | null: false |
-| price             | string     | null: false |
+| price             | integer    | null: false |
 | user              | references |             |
-| transaction       | references |             |
 
 ### Association
 
-- belongs_to :users
+- belongs_to :user
 - has_one    :purchases
 - has_many   :transactions
 - has_many   :transactions_items
@@ -48,9 +46,8 @@
 | user              | references |             |
 | item              | references |             |
 
-- belongs_to :users
-- has_many   :items
-- has_one    :purchases
+- belongs_to :user
+- belongs_to :item
 - has_many   :transactions_items
 
 ## transactions_items テーブル
@@ -60,8 +57,8 @@
 | transaction       | references |             |
 | item              | references |             |
 
-- belongs_to :transactions
-- belongs_to :items
+- belongs_to :transaction
+- belongs_to :item
 
 ## purchases テーブル
 
@@ -71,14 +68,11 @@
 | municipality           | string     | null: false |
 | address                | string     | null: false |
 | building_name          | string     |             |
-| postal_code            | string     | null: false |
-| phone_number           | string     | null: false |
-| user                   | references |             |
+| postal_code            | integer    | null: false |
+| phone_number           | integer    | null: false |
 
 ### Association
 
-- belongs_to :users
-- belongs_to :items
-- belongs_to :transactions
+- belongs_to :item
 
 
