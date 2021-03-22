@@ -43,7 +43,6 @@
 | ----------------- | ---------- | ----------------- |
 | user              | references | foreign_key: true |
 | item              | references | foreign_key: true |
-| purchase          | references | foreign_key: true |
 
 - belongs_to :user
 - belongs_to :item
@@ -51,14 +50,15 @@
 
 ## purchases テーブル
 
-| Column                 | Type       | Options     |
-| ---------------------- | ---------- | ----------- |
-| street_address_id      | integer    | null: false |
-| municipality           | string     | null: false |
-| address                | string     | null: false |
-| building_name          | string     |             |
-| postal_code            | string     | null: false |
-| phone_number           | string     | null: false |
+| Column                 | Type       | Options           |
+| ---------------------- | ---------- | ----------------- |
+| street_address_id      | integer    | null: false       |
+| municipality           | string     | null: false       |
+| address                | string     | null: false       |
+| building_name          | string     |                   |
+| postal_code            | string     | null: false       |
+| phone_number           | string     | null: false       |
+| dealing                | references | foreign_key: true |
 
 ### Association
 
