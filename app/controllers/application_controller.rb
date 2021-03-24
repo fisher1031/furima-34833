@@ -10,10 +10,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def configure_permitted_parameters   # メソッド名は慣習
-    # devise_parameter_sanitizerのpermitメソッド
-    #devise_parameter_sanitizer.permit(:deviseの処理名, keys: [:許可するキー])
-    #:sign_up	サインアップ（新規登録）の処理を行うとき
+  def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email])
     devise_parameter_sanitizer.permit(:sign_up, keys: [:password])
