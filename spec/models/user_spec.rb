@@ -7,15 +7,7 @@ end
  describe 'ユーザー新規登録' do
   context '新規登録がうまくいくとき' do
     it "nicknameとemail、passwordとpassword_confirmation、first_nameとsecond_name、first_name_kanaとsecond_name_kana、birthdayが存在すれば登録できる" do
-      @user.nickname = 'ニックネーム'
-      @user.email = 'test@testertester.com'
-      @user.password = 'abc123'
-      @user.password_confirmation = 'abc123'
-      @user.first_name = '山田'
-      @user.second_name = '隆太郎'
-      @user.first_name_kana = 'ヤマダ'
-      @user.second_name_kana = 'リュウタロウ'
-      @user.birthday = '1994-10-31'
+      expect(@user).to be_valid
     end
     it 'passwordとpassword_confirmationが一致し、かつ6文字以上の半角英数字混合であれば登録できる' do
       @user.password = '123abc'
