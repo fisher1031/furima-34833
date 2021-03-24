@@ -33,15 +33,29 @@ end
       expect(@user.errors.full_messages).to include "Password can't be blank"
     end
     it 'passwordは6文字以上でないと登録できない' do
-      @user.password = '12345'
+      @user.password = '123ab'
       @user.valid?
       expect(@user.errors.full_messages).to include "Password is too short (minimum is 6 characters)"
     end
-    it 'passwordは半角英数字混合でなければ登録できない' do
+
+    it 'passwordが半角英語だけでは登録できない' do
+      @user.password = 'aaaaaa'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Password is invalid"
+    end
+
+    it 'passwordが半角数字だけでは登録できない' do
       @user.password = '000000'
       @user.valid?
       expect(@user.errors.full_messages).to include "Password is invalid"
     end
+
+    it 'passwordが全角では登録できない' do
+      @user.password = 'これはテスト'
+      @user.valid?
+      expect(@user.errors.full_messages).to include "Password is invalid"
+    end
+
     it 'passwordとpassword_confirmationの値が一致していなければ登録できない' do
       @user.password = '000aaa'
       @user.password_confirmation = '000000'
