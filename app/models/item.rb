@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :delivery_fee_id , presence: true, numericality: { other_than: 1 } 
   validates :delivery_day_id , presence: true, numericality: { other_than: 1 } 
   validates :street_address_id , presence: true, numericality: { other_than: 1 } 
-  validates :price , presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 999999}
+  validates :price , presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999}
 
   belongs_to :category
   belongs_to :ItemCondition
