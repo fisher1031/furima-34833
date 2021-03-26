@@ -34,30 +34,56 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include "Text can't be blank"
     end
+
     it 'category_idが空では登録できない' do
       @item.category_id = ''  # category_idの値を空にする
       @item.valid?
       expect(@item.errors.full_messages).to include "Category can't be blank"
+    end
+    it 'category_idが1では登録できない' do
+      @item.category_id = '1'  # category_idの値を空にする
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Category must be other than 1"
     end
     it 'item_condition_idが空では登録できない' do
       @item.item_condition_id = ''  # item_condition_idの値を空にする
       @item.valid?
       expect(@item.errors.full_messages).to include "Item condition can't be blank"
     end
+    it 'item_condition_idが1では登録できない' do
+      @item.item_condition_id = '1'  # item_condition_idの値を空にする
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Item condition must be other than 1"
+    end
     it 'delivery_fee_idが空では登録できない' do
       @item.delivery_fee_id = ''  # delivery_fee_idの値を空にする
       @item.valid?
       expect(@item.errors.full_messages).to include "Delivery fee can't be blank"
+    end
+    it 'delivery_fee_idが1では登録できない' do
+      @item.delivery_fee_id = '1'  # delivery_fee_idの値を空にする
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Delivery fee must be other than 1"
     end
     it 'delivery_day_idが空では登録できない' do
       @item.delivery_day_id = ''  # delivery_day_idの値を空にする
       @item.valid?
       expect(@item.errors.full_messages).to include "Delivery day can't be blank"
     end
+    it 'delivery_day_idが1では登録できない' do
+      @item.delivery_day_id = '1'  # delivery_day_idの値を空にする
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Delivery day must be other than 1"
+    end
     it 'street_address_idが空では登録できない' do
       @item.street_address_id = ''  # street_address_idの値を空にする
       @item.valid?
       expect(@item.errors.full_messages).to include "Street address can't be blank"
+    end
+    it 'street_address_idが1では登録できない' do
+      @item.street_address_id = '1'  # street_address_idの値を空にする
+      @item.valid?
+      expect(@item.errors.full_messages).to include "Street address must be other than 1"
     end
     it 'imageが空では登録できない' do
       @item.image = nil  # imageの値を空にする
