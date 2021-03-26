@@ -64,7 +64,6 @@ RSpec.describe Item, type: :model do
     it 'imageが空では登録できない' do
       @item.image = nil  # imageの値を空にする
       @item.valid?
-      binding.pry
       expect(@item.errors.full_messages).to include "Image can't be blank"
     end
     it 'priceが空では登録できない' do
