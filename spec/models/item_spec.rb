@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品機能' do
    context '新規登録がうまくいくとき' do
-    it "nameとtext、category_idとitem_condition_id、delivery_fee_idとdelivery_day_id、street_address_id、priceとimageが存在すれば登録できる" do
+    it 'nameとtext、category_idとitem_condition_id、delivery_fee_idとdelivery_day_id、street_address_id、priceとimageが存在すれば登録できる' do
       expect(@item).to be_valid
     end
     it 'priceは¥10,000,000以下であれば登録できる' do
@@ -21,9 +21,7 @@ RSpec.describe Item, type: :model do
       @item.price = '9999'
       expect(@item).to be_valid
     end
-   end
-
-
+  end
 
    context '新規登録がうまくいかないとき' do
     it 'nameが空では登録できない' do
