@@ -19,9 +19,9 @@ class Item < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
-  belongs_to :ItemCondition
-  belongs_to :DeliveryFee
-  belongs_to :StreetAddress
-  belongs_to :DeliveryDay
+  belongs_to :item_condition
+  belongs_to :delivery_fee
+  belongs_to :street_address
+  belongs_to :delivery_day
   has_one_attached :image
 end
