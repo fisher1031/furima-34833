@@ -10,10 +10,9 @@ class Category < ActiveHash::Base
     { id: 8, category: '家電・スマホ・カメラ' },
     { id: 9, category: 'スポーツ・メジャー' },
     { id: 10, category: 'ハンドメイド' },
-    { id: 11, category: 'その他' },
+    { id: 11, category: 'その他' }
   ]
 
   include ActiveHash::Associations
   has_many :items
-
 end

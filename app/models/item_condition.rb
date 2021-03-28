@@ -6,10 +6,9 @@ class ItemCondition < ActiveHash::Base
     { id: 4, category: '目立った傷や汚れなし' },
     { id: 5, category: 'やや傷や汚れあり' },
     { id: 6, category: '傷や汚れあり' },
-    { id: 7, category: '全体的に状態が悪い' },
+    { id: 7, category: '全体的に状態が悪い' }
   ]
 
   include ActiveHash::Associations
   has_many :items
-
 end
