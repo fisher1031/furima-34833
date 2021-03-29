@@ -19,10 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def set_item
-    @item = Item.find(params[:id])
-   end
-
   def show
   end
 
@@ -37,13 +33,17 @@ class ItemsController < ApplicationController
       redirect_to item_path
     else
       render :edit
-    end
     unless @item.user_id == current_user.id
       redirect_to action: :index
+    end
     end
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+   end
 
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :item_condition_id, :delivery_fee_id, :delivery_day_id,
