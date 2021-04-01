@@ -3,14 +3,15 @@ class OrderDealing
   attr_accessor :street_address_id, :municipality, :address, :building_name, :postal_code, :phone_number, :user_id, :item_id
   
   with_options presence: true do
-    validates :street_address_id
     validates :municipality
     validates :address
-    validates :postal_code
-    validates :phone_number
     validates :user_id
     validates :item_id
   end
+
+    validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
+    validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
+    validates :street_address_id, presence: true, numericality: { other_than: 1 }
 
    def save
     order = Order.create(item_id: item_id, user_id: user_id)
