@@ -1,9 +1,12 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, except: :index
+  before_action :authenticate_user!, only: :index
 
   def index
     @order_dealing = OrderDealing.new
     @item = Item.find(params[:item_id])
+    if @item.user_id == current_user.id
+      return redirect_to root_path
+    end
   end
 
   def create
@@ -25,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
      def pay_item
-      Payjp.api_key = "sk_test_f657cc1dbd3acd6e164b8142"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値段
         card: order_params[:token],    # カードトークン
