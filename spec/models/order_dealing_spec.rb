@@ -9,7 +9,7 @@ RSpec.describe OrderDealing, type: :model do
     end
 
     context '内容に問題ない場合' do
-      it 'postal_code・street_address_id・municipality・address・phone_numberがある場合登録できる' do
+      it 'postal_code・street_address_id・municipality・address・phone_number・tokenがある場合登録できる' do
         @order_dealing.postal_code = '123-4567'
         @order_dealing.street_address_id = 2
         @order_dealing.municipality = '横浜市緑区'
@@ -100,6 +100,12 @@ RSpec.describe OrderDealing, type: :model do
         @order_dealing.phone_number = '一二三四五六七八九一二'
         @order_dealing.valid?
         expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+      end
+
+      it "tokenが空では登録できない" do
+        @order_dealing.token = nil
+        @order_dealing.valid?
+        expect(@order_dealing.errors.full_messages).to include "Token can't be blank"
       end
     end
 end
