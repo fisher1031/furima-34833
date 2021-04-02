@@ -7,6 +7,9 @@ class OrdersController < ApplicationController
     if @item.user_id == current_user.id
       return redirect_to root_path
     end
+    if @item.order.present?
+      return redirect_to root_path
+    end
   end
 
   def create
