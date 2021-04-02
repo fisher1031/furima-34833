@@ -23,18 +23,12 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless @item.user_id == current_user.id
-      redirect_to action: :index
-    end
-    if @item.order.present?
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @item.user_id == current_user.id
+    redirect_to action: :index if @item.order.present?
   end
 
   def update
-    unless @item.user_id == current_user.id
-      redirect_to action: :index
-    end
+    redirect_to action: :index unless @item.user_id == current_user.id
     if @item.update(item_params)
       redirect_to item_path
     else
@@ -43,19 +37,15 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    unless @item.user_id == current_user.id
-      redirect_to action: :index
-    end
-    if @item.destroy
-      redirect_to root_path
-    end
+    redirect_to action: :index unless @item.user_id == current_user.id
+    redirect_to root_path if @item.destroy
   end
 
   private
 
   def set_item
     @item = Item.find(params[:id])
-   end
+  end
 
   def item_params
     params.require(:item).permit(:name, :text, :category_id, :item_condition_id, :delivery_fee_id, :delivery_day_id,

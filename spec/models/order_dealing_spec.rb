@@ -44,7 +44,7 @@ RSpec.describe OrderDealing, type: :model do
       it 'postal_codeには-が含まれていないと登録できない' do
         @order_dealing.postal_code = '1234567'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Postal code is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Postal code is invalid'
       end
       it 'street_address_idが空では登録できない' do
         @order_dealing.street_address_id = '' # street_address_idの値を空にする
@@ -74,39 +74,39 @@ RSpec.describe OrderDealing, type: :model do
       it 'phone_numberは11文字以上の数値では登録できない' do
         @order_dealing.phone_number = '123456789123'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberは半角英単語では登録できない' do
         @order_dealing.phone_number = 'aaaaaaaaaaa'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberは全角数値では登録できない' do
         @order_dealing.phone_number = '１２３４５６７８９１２'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberは全角ひらがなでは登録できない' do
         @order_dealing.phone_number = 'あいうえおあいうえおあ'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberは全角カタカナでは登録できない' do
         @order_dealing.phone_number = 'アイウエオアイウエオア'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
       it 'phone_numberは全角漢字では登録できない' do
         @order_dealing.phone_number = '一二三四五六七八九一二'
         @order_dealing.valid?
-        expect(@order_dealing.errors.full_messages).to include "Phone number is invalid"
+        expect(@order_dealing.errors.full_messages).to include 'Phone number is invalid'
       end
 
-      it "tokenが空では登録できない" do
+      it 'tokenが空では登録できない' do
         @order_dealing.token = nil
         @order_dealing.valid?
         expect(@order_dealing.errors.full_messages).to include "Token can't be blank"
       end
     end
-end
+  end
 end
