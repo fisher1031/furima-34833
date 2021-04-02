@@ -1,12 +1,13 @@
 class OrderDealing
   include ActiveModel::Model
-  attr_accessor :street_address_id, :municipality, :address, :building_name, :postal_code, :phone_number, :user_id, :item_id
+  attr_accessor :street_address_id, :municipality, :address, :building_name, :postal_code, :phone_number, :user_id, :item_id, :token
   
   with_options presence: true do
     validates :municipality
     validates :address
     validates :user_id
     validates :item_id
+    validates :token
   end
 
     validates :postal_code, presence: true, format: { with: /\A\d{3}[-]\d{4}\z/ }
