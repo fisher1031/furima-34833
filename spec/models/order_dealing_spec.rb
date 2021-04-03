@@ -10,29 +10,10 @@ RSpec.describe OrderDealing, type: :model do
 
     context '内容に問題ない場合' do
       it 'postal_code・street_address_id・municipality・address・phone_numberがある場合登録できる' do
-        @order_dealing.postal_code = '123-4567'
-        @order_dealing.street_address_id = 2
-        @order_dealing.municipality = '横浜市緑区'
-        @order_dealing.address = '青山1-1-1'
-        @order_dealing.phone_number = '12345671234'
-        @order_dealing.user_id = 2
-        @order_dealing.item_id = 2
         expect(@order_dealing).to be_valid
       end
       it 'building_nameが空でも登録できる' do
         @order_dealing.building_name = ''
-        expect(@order_dealing).to be_valid
-      end
-      it 'postal_codeに-が含まれていると登録できる' do
-        @order_dealing.postal_code = '123-4567'
-        expect(@order_dealing).to be_valid
-      end
-      it 'street_address_idが1以外で登録できる' do
-        @order_dealing.street_address_id = 2
-        expect(@order_dealing).to be_valid
-      end
-      it 'phone_numberが11桁以内なら登録できる' do
-        @order_dealing.phone_number = '12345678912'
         expect(@order_dealing).to be_valid
       end
     end
