@@ -9,11 +9,16 @@ class OrderDealing
     validates :user_id
     validates :item_id
     validates :token
+    with_options format: { with: /\A\d{3}-\d{4}\z/ } do
+      validates :postal_code
+    end
+    with_options format: { with: /\A\d{10,11}\z/ } do
+      validates :phone_number
+    end
+    with_options numericality: { other_than: 1 } do
+      validates :street_address_id
+    end
   end
-
-  validates :postal_code, presence: true, format: { with: /\A\d{3}-\d{4}\z/ }
-  validates :phone_number, presence: true, format: { with: /\A\d{11}\z/ }
-  validates :street_address_id, presence: true, numericality: { other_than: 1 }
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
